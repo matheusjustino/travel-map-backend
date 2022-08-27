@@ -18,6 +18,11 @@ async function bootstrap() {
 		new ExpressAdapter(),
 	);
 
+	app.enableCors({
+		origin: process.env.FRONTEND_URLS.split(';'),
+		credentials: true,
+	});
+
 	app.use(helmet());
 	app.use(compression());
 	app.use(json({ limit: '50mb' }));
