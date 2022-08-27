@@ -15,7 +15,7 @@ import { PinModule } from './pin/pin.module';
 		AppConfigModule,
 		GraphQLModule.forRoot({
 			cors: {
-				origin: '*', //process.env.FRONTEND_URLS.split(';'),
+				origin: process.env.FRONTEND_URLS.split(';'),
 				credentials: true,
 			},
 			driver: ApolloDriver,
