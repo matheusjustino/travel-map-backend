@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  app:
+    container_name: travel-map-app
+    build:
+      dockerfile: Dockerfile-dev
+      context: .
+    env_file: .env
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/home/app:cached
+      - ./package.json:/home/app/package.json:cached
+    depends_on:
+      - mongodb
+    networks:
+      - default_services_network
+
+  mongodb:
+    image: mongo:4.2.22
+    container_name: travel-map-db
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: mongodb
+    #   MONGO_INITDB_ROOT_PASSWORD: docker
+    #   MONGO_DB_NAME: travel-map-db
+    ports:
+      - 27017:27017
+    networks:
+      - default_services_network
+
+networks:
+  default_services_network:
+    name: travel-map-services
