@@ -20,7 +20,10 @@ FROM node:18-alpine3.15
 RUN apk add --no-cache bash
 
 COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/yarn.lock ./
 COPY --from=builder /app/.docker ./.docker
+
+RUN chmod u+x .docker/entrypoint.sh
 
 RUN yarn install --prod --frozen-lockfile
 

@@ -19,10 +19,6 @@ services:
   mongodb:
     image: mongo:4.2.22
     container_name: travel-map-db
-    # environment:
-    #   MONGO_INITDB_ROOT_USERNAME: mongodb
-    #   MONGO_INITDB_ROOT_PASSWORD: docker
-    #   MONGO_DB_NAME: travel-map-db
     ports:
       - 27017:27017
     networks:

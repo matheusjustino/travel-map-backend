@@ -1,3 +1,3 @@
 #!/bin/bash
 
-yarn start:prod
+node dist/main.js
